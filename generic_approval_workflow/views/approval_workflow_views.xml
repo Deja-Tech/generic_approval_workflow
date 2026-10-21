@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="approval_workflow_view_list" model="ir.ui.view">
+            <field name="name">approval.workflow.list</field>
+            <field name="model">approval.workflow</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="model_name" string="Model Name"/>
+                    <field name="condition" optional="show"/>
+                    <field name="stage_count" string="Stages"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state == 'active'"
+                           decoration-muted="state == 'inactive'"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="approval_workflow_view_form" model="ir.ui.view">
+            <field name="name">approval.workflow.form</field>
+            <field name="model">approval.workflow</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_apply_configuration" type="object"
+                                string="Apply Configuration" class="btn-primary"
+                                help="Create the technical field on the target model and
+                                      regenerate the buttons on its form."/>
+                    </header>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                                invisible="active"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" placeholder="e.g. Purchase Approval"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="active" invisible="1"/>
+                                <field name="model_id" options="{'no_create': True}"/>
+                                <field name="model_name" string="Model Name" readonly="1"/>
+                                <field name="sequence"/>
+                            </group>
+                            <group>
+                                <field name="state" widget="radio" options="{'horizontal': True}"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                            </group>
+                        </group>
+                        <group string="Behaviour">
+                            <field name="blocked_methods"
+                                   placeholder="button_confirm,action_confirm"/>
+                            <field name="inject_buttons"/>
+                            <field name="view_id" readonly="1"
+                                   invisible="not view_id" groups="base.group_no_one"/>
+                        </group>
+                        <group string="Hidden States" invisible="not excluded_state_ids">
+                            <field name="excluded_state_ids" nolabel="1" colspan="2"
+                                   widget="many2many_tags"
+                                   help="Removed from the lines: hidden in the backend, kept in the model."/>
+                        </group>
+                        <group string="Trigger Criteria">
+                            <field name="condition" nolabel="1" colspan="2"
+                                   widget="domain" options="{'model': 'model_name'}"/>
+                        </group>
+                        <notebook>
+                            <page string="Approval Stages" name="stages">
+                                <field name="stage_ids" context="{'default_workflow_id': id}">
+                                    <list decoration-muted="line_type == 'state'">
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="line_type"/>
+                                        <field name="name"/>
+                                        <field name="model_state_id" optional="show"
+                                               readonly="line_type != 'state'"/>
+                                        <field name="target_state_id" optional="show"
+                                               invisible="line_type == 'state'"/>
+                                        <field name="allow_reject" optional="show"
+                                               invisible="line_type == 'state'"/>
+                                        <field name="allow_send_back" optional="hide"
+                                               invisible="line_type == 'state'"/>
+                                        <field name="approver_type"
+                                               invisible="line_type == 'state'"/>
+                                        <field name="user_ids" widget="many2many_tags"
+                                               optional="show"/>
+                                        <field name="approval_method"
+                                               invisible="line_type == 'state'"/>
+                                        <field name="next_stage_id" optional="hide"/>
+                                        <field name="reject_behavior" optional="hide"/>
+                                        <field name="mail_template_id" optional="hide"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Description" name="description">
+                                <field name="note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="approval_workflow_view_search" model="ir.ui.view">
+            <field name="name">approval.workflow.search</field>
+            <field name="model">approval.workflow</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <filter string="Active" name="is_active" domain="[('active','=',True)]"/>
+                    <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                    <group>
+                        <filter string="Target Model" name="group_model"
+                                context="{'group_by': 'model_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="approval_workflow_stage_view_list" model="ir.ui.view">
+            <field name="name">approval.workflow.stage.list</field>
+            <field name="model">approval.workflow.stage</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="workflow_id"/>
+                    <field name="approver_type"/>
+                    <field name="state_ids" widget="many2many_tags" optional="show"/>
+                    <field name="approval_method"/>
+                    <field name="next_stage_id" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="approval_workflow_stage_view_form" model="ir.ui.view">
+            <field name="name">approval.workflow.stage.form</field>
+            <field name="model">approval.workflow.stage</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1><field name="name" placeholder="e.g. Manager Approval"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="workflow_id" options="{'no_create': True}"/>
+                                <field name="model_name" invisible="1"/>
+                                <field name="line_type" widget="radio"
+                                       options="{'horizontal': True}"/>
+                                <field name="model_state_id"
+                                       invisible="line_type != 'state'"
+                                       required="line_type == 'state'"/>
+                                <field name="target_state_id"
+                                       invisible="line_type == 'state'"/>
+                                <field name="button_label" invisible="line_type == 'state'"/>
+                                <field name="sequence"/>
+                                <field name="active" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="next_stage_id" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <group string="Applicable States">
+                            <field name="state_ids" nolabel="1" colspan="2"
+                                   widget="many2many_tags" options="{'no_create': True}"
+                                   placeholder="Leave empty to apply whatever the state is ..."/>
+                        </group>
+                        <group string="Approvers">
+                            <group>
+                                <field name="approver_type" widget="radio"/>
+                                <field name="user_ids" widget="many2many_tags"
+                                       invisible="approver_type != 'user'"
+                                       required="approver_type == 'user'"/>
+                                <field name="employee_ids" widget="many2many_tags"
+                                       invisible="approver_type != 'employee'"
+                                       required="approver_type == 'employee'"/>
+                                <field name="job_id" invisible="approver_type != 'job'"
+                                       required="approver_type == 'job'"/>
+                                <field name="manager_level"
+                                       invisible="approver_type != 'manager'"/>
+                            </group>
+                            <group>
+                                <field name="approval_method" widget="radio"/>
+                                <field name="min_approvals"
+                                       invisible="approval_method != 'minimum'"
+                                       required="approval_method == 'minimum'"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Actions &amp; Behaviour" name="actions">
+                                <group>
+                                    <group string="Available Actions">
+                                        <field name="allow_approve"/>
+                                        <field name="allow_reject"/>
+                                        <field name="allow_send_back"/>
+                                        <field name="allow_cancel"/>
+                                        <field name="allow_reset_draft"/>
+                                    </group>
+                                    <group string="Behaviour">
+                                        <field name="reject_behavior"/>
+                                        <field name="reject_stage_id"
+                                               invisible="reject_behavior != 'stage'"
+                                               required="reject_behavior == 'stage'"/>
+                                        <field name="reject_model_state_id"
+                                               options="{'no_create': True}"
+                                               invisible="reject_behavior != 'reject'"/>
+                                        <field name="return_behavior"/>
+                                        <field name="return_stage_id"
+                                               invisible="return_behavior != 'stage'"
+                                               required="return_behavior == 'stage'"/>
+                                    </group>
+                                </group>
+                                <group string="Stage Condition">
+                                    <field name="condition" nolabel="1" colspan="2"
+                                           widget="domain" options="{'model': 'model_name'}"/>
+                                </group>
+                            </page>
+                            <page string="Notifications" name="notifications">
+                                <group>
+                                    <group>
+                                        <field name="mail_template_id"
+                                               options="{'no_create': True}"/>
+                                        <field name="approve_template_id"
+                                               options="{'no_create': True}"/>
+                                    </group>
+                                    <group>
+                                        <field name="reject_template_id"
+                                               options="{'no_create': True}"/>
+                                        <field name="return_template_id"
+                                               options="{'no_create': True}"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="notify_followers"/>
+                                    <field name="extra_recipient_ids" widget="many2many_tags"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_approval_workflow" model="ir.actions.act_window">
+            <field name="name">Approval Workflows</field>
+            <field name="res_model">approval.workflow</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create an approval workflow</p>
+                <p>Choose a target model, set the trigger criteria, then add the approval stages.</p>
+            </field>
+        </record>
+
+        <record id="approval_workflow_record_view_list" model="ir.ui.view">
+            <field name="name">approval.workflow.record.list</field>
+            <field name="model">approval.workflow.record</field>
+            <field name="arch" type="xml">
+                <list create="false">
+                    <field name="res_name" string="Record"/>
+                    <field name="res_model"/>
+                    <field name="workflow_id"/>
+                    <field name="stage_id"/>
+                    <field name="status_label" string="Status"/>
+                    <field name="state" widget="badge"
+                           decoration-success="state == 'approved'"
+                           decoration-danger="state == 'rejected'"
+                           decoration-info="state == 'pending'"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="approval_workflow_record_view_form" model="ir.ui.view">
+            <field name="name">approval.workflow.record.form</field>
+            <field name="model">approval.workflow.record</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <header>
+                        <button name="action_submit" type="object" string="Submit for Approval"
+                                class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_approve" type="object" string="Approve"
+                                class="btn-primary" invisible="not can_approve"/>
+                        <button name="action_open_reject_wizard" type="object" string="Reject"
+                                invisible="not can_approve"/>
+                        <button name="action_open_send_back_wizard" type="object"
+                                string="Send Back" invisible="not can_approve"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,pending,approved"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" icon="fa-external-link"
+                                    name="action_open_record" string="Open Record"/>
+                            <button class="oe_stat_button" type="object" icon="fa-history"
+                                    name="action_view_history" string="History"/>
+                        </div>
+                        <div class="oe_title">
+                            <h1><field name="res_name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="res_model" readonly="1"/>
+                                <field name="res_id" readonly="1" groups="base.group_no_one"/>
+                                <field name="workflow_id" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="stage_id" readonly="1"/>
+                                <field name="status_label" readonly="1"/>
+                                <field name="progress" readonly="1"/>
+                                <field name="can_approve" invisible="1"/>
+                                <field name="approver_ids" widget="many2many_tags"
+                                       readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="approval_workflow_record_view_search" model="ir.ui.view">
+            <field name="name">approval.workflow.record.search</field>
+            <field name="model">approval.workflow.record</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="res_name" string="Record"/>
+                    <field name="workflow_id"/>
+                    <filter string="To Approve by Me" name="my_approvals"
+                            domain="[('state','=','pending'),('approver_ids','in',uid)]"/>
+                    <filter string="Pending" name="pending" domain="[('state','=','pending')]"/>
+                    <filter string="Approved" name="approved" domain="[('state','=','approved')]"/>
+                    <group>
+                        <filter string="Model" name="group_model" context="{'group_by':'res_model'}"/>
+                        <filter string="Stage" name="group_stage" context="{'group_by':'stage_id'}"/>
+                        <filter string="State" name="group_state" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_approval_workflow_record" model="ir.actions.act_window">
+            <field name="name">Approval Records</field>
+            <field name="res_model">approval.workflow.record</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_my_approvals': 1}</field>
+        </record>
+
+        <record id="action_approval_workflow_stage" model="ir.actions.act_window">
+            <field name="name">Approval Stages</field>
+            <field name="res_model">approval.workflow.stage</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

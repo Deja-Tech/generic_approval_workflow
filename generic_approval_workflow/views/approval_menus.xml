@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_approval_root" name="Approvals" sequence="95"
+                  groups="group_approval_user"/>
+
+        <menuitem id="menu_approval_workflow_record" name="Approval Records"
+                  parent="menu_approval_root" action="action_approval_workflow_record"
+                  sequence="5"/>
+
+        <menuitem id="menu_approval_history" name="Approval History"
+                  parent="menu_approval_root" action="action_approval_history"
+                  sequence="10"/>
+
+        <menuitem id="menu_approval_configuration" name="Configuration"
+                  parent="menu_approval_root" sequence="90"
+                  groups="group_approval_manager"/>
+
+        <menuitem id="menu_approval_workflow" name="Approval Workflows"
+                  parent="menu_approval_configuration" action="action_approval_workflow"
+                  sequence="10"/>
+
+        <menuitem id="menu_approval_workflow_stage" name="Approval Stages"
+                  parent="menu_approval_configuration" action="action_approval_workflow_stage"
+                  sequence="20"/>
+
+    </data>
+</odoo>
