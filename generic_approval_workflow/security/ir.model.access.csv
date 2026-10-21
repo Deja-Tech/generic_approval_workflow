@@ -1,0 +1,12 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_approval_workflow_user,approval.workflow.user,model_approval_workflow,group_approval_user,1,0,0,0
+access_approval_workflow_manager,approval.workflow.manager,model_approval_workflow,group_approval_manager,1,1,1,1
+access_approval_workflow_stage_user,approval.workflow.stage.user,model_approval_workflow_stage,group_approval_user,1,0,0,0
+access_approval_workflow_stage_manager,approval.workflow.stage.manager,model_approval_workflow_stage,group_approval_manager,1,1,1,1
+access_approval_history_user,approval.history.user,model_approval_history,group_approval_user,1,0,0,0
+access_approval_history_manager,approval.history.manager,model_approval_history,group_approval_manager,1,1,1,1
+access_approval_action_wizard_user,approval.action.wizard.user,model_approval_action_wizard,group_approval_user,1,1,1,1
+access_approval_workflow_record_user,approval.workflow.record.user,model_approval_workflow_record,group_approval_user,1,1,1,0
+access_approval_workflow_record_manager,approval.workflow.record.manager,model_approval_workflow_record,group_approval_manager,1,1,1,1
+access_approval_model_state_user,approval.model.state.user,model_approval_model_state,group_approval_user,1,0,0,0
+access_approval_model_state_manager,approval.model.state.manager,model_approval_model_state,group_approval_manager,1,1,1,1

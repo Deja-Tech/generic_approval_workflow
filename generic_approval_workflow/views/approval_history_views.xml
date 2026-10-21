@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="approval_history_view_list" model="ir.ui.view">
+            <field name="name">approval.history.list</field>
+            <field name="model">approval.history</field>
+            <field name="arch" type="xml">
+                <list create="false" edit="false">
+                    <field name="action_date"/>
+                    <field name="res_name" string="Record"/>
+                    <field name="res_model" optional="hide"/>
+                    <field name="stage_name" string="Stage"/>
+                    <field name="action" widget="badge"
+                           decoration-success="action == 'approve'"
+                           decoration-danger="action == 'reject'"
+                           decoration-warning="action in ('send_back', 'cancel')"/>
+                    <field name="user_id"/>
+                    <field name="cycle" optional="hide"/>
+                    <field name="previous_status" optional="hide"/>
+                    <field name="new_status" optional="show"/>
+                    <field name="comment" optional="show"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="approval_history_view_form" model="ir.ui.view">
+            <field name="name">approval.history.form</field>
+            <field name="model">approval.history</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" icon="fa-external-link"
+                                    name="action_open_record" string="Open Record"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="res_name" string="Record"/>
+                                <field name="res_model"/>
+                                <field name="workflow_id"/>
+                                <field name="stage_name" string="Stage"/>
+                            </group>
+                            <group>
+                                <field name="action"/>
+                                <field name="user_id"/>
+                                <field name="action_date"/>
+                                <field name="previous_status"/>
+                                <field name="new_status"/>
+                            </group>
+                        </group>
+                        <group string="Comment">
+                            <field name="comment" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="approval_history_view_search" model="ir.ui.view">
+            <field name="name">approval.history.search</field>
+            <field name="model">approval.history</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="res_name" string="Record"/>
+                    <field name="user_id"/>
+                    <field name="workflow_id"/>
+                    <field name="stage_name"/>
+                    <filter string="Approved" name="approved" domain="[('action','=','approve')]"/>
+                    <filter string="Rejected" name="rejected" domain="[('action','=','reject')]"/>
+                    <filter string="Sent Back" name="sent_back" domain="[('action','=','send_back')]"/>
+                    <group>
+                        <filter string="Model" name="group_model" context="{'group_by': 'res_model'}"/>
+                        <filter string="Workflow" name="group_workflow" context="{'group_by': 'workflow_id'}"/>
+                        <filter string="Action" name="group_action" context="{'group_by': 'action'}"/>
+                        <filter string="Done by" name="group_user" context="{'group_by': 'user_id'}"/>
+                        <filter string="Date" name="group_date" context="{'group_by': 'action_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_approval_history" model="ir.actions.act_window">
+            <field name="name">Approval History</field>
+            <field name="res_model">approval.history</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

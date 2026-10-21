@@ -1,0 +1,304 @@
+<!-- ============================================================
+     Generic Configurable Approval Workflow - Odoo Apps page
+     Inline styles only: apps.odoo.com strips <style> and <script>.
+     ============================================================ -->
+
+<!-- ========================= HERO ========================= -->
+<section class="oe_container" style="padding: 40px 16px 24px; background-color: #5E3D57; background-image: linear-gradient(120deg, #5E3D57 0%, #016A6F 100%); border-radius: 14px;">
+    <div class="oe_row text-center" style="max-width: 900px; margin: 0 auto;">
+        <img src="icon.png" alt="Approval Workflow" style="width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 6px 18px rgba(0,0,0,.25);"/>
+        <h1 style="color: #ffffff; font-size: 40px; font-weight: 700; margin: 20px 0 8px;">Generic Configurable Approval Workflow</h1>
+        <p style="color: #FFFFFF; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,.35); font-size: 20px; line-height: 1.5; margin: 0 0 22px;">
+            Add multi-stage approvals to <b style="color:#ffffff;">any Odoo model</b> - Purchase, Invoices, Requisitions, HR requests, Loans or your own custom models -
+            configured from the screen, <b style="color:#ffffff;">without writing code</b>.
+        </p>
+        <div>
+            <span style="display:inline-block; margin:4px; padding:6px 16px; border-radius:20px; background:rgba(255,255,255,.18); color:#fff; font-weight:600;"><i class="fa fa-check-circle"></i> Odoo 18</span>
+            <span style="display:inline-block; margin:4px; padding:6px 16px; border-radius:20px; background:rgba(255,255,255,.18); color:#fff; font-weight:600;"><i class="fa fa-users"></i> Community &amp; Enterprise</span>
+            <span style="display:inline-block; margin:4px; padding:6px 16px; border-radius:20px; background:rgba(255,255,255,.18); color:#fff; font-weight:600;"><i class="fa fa-balance-scale"></i> OPL-1</span>
+            <span style="display:inline-block; margin:4px; padding:6px 16px; border-radius:20px; background:rgba(255,255,255,.18); color:#fff; font-weight:600;"><i class="fa fa-building"></i> Multi-company</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== WHY THIS APP ===================== -->
+<section class="oe_container" style="padding: 40px 16px 8px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 6px;">One approval engine for your whole company</h2>
+        <p class="text-center" style="color:#555; font-size:17px; margin-bottom: 28px;">
+            Stop building a new approval module for every document. Define who approves, in which order and what happens on rejection - once - and reuse it everywhere.
+        </p>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div style="height:100%; padding:22px; border-radius:12px; background:#FBF7FA; border:1px solid #EADDE6; text-align:center;">
+                    <i class="fa fa-cubes" style="font-size:34px; color:#714B67;"></i>
+                    <h4 style="margin:12px 0 6px; font-weight:700;">Works on any model</h4>
+                    <p style="color:#555; margin:0;">Pick the target model from a list. The approval buttons are added to its form automatically.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div style="height:100%; padding:22px; border-radius:12px; background:#F2FAFA; border:1px solid #CFE9EA; text-align:center;">
+                    <i class="fa fa-sliders" style="font-size:34px; color:#017E84;"></i>
+                    <h4 style="margin:12px 0 6px; font-weight:700;">Fully configurable</h4>
+                    <p style="color:#555; margin:0;">Add, remove and drag-and-drop stages at any time. Every rule is a setting, not code.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div style="height:100%; padding:22px; border-radius:12px; background:#FFF8EC; border:1px solid #F5E2BF; text-align:center;">
+                    <i class="fa fa-history" style="font-size:34px; color:#D48806;"></i>
+                    <h4 style="margin:12px 0 6px; font-weight:700;">Complete audit trail</h4>
+                    <p style="color:#555; margin:0;">Who did what, when, at which stage and why - logged on every record.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== KEY FEATURES ===================== -->
+<section class="oe_container" style="padding: 24px 16px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 24px;"><i class="fa fa-star" style="color:#F0B429;"></i> Key Features</h2>
+        <div class="row">
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#714B67; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-filter" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Trigger criteria</b><br/><span style="color:#555;">Apply a workflow only to matching records, e.g. <code>amount &gt; 10,000</code> or a specific journal / request type.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#017E84; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-list-ol" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Dynamic stages</b><br/><span style="color:#555;">Unlimited stages, each with its own condition, so a stage can be skipped for small amounts.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#714B67; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-user-circle" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Flexible approvers</b><br/><span style="color:#555;">Specific users, specific employees, a job position, or the employee's manager (any level up).</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#017E84; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-check-square-o" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Approval methods</b><br/><span style="color:#555;">One approver is enough, all approvers are required, or a minimum number of approvals.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#714B67; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-random" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Reject &amp; send-back rules</b><br/><span style="color:#555;">Reject, return to draft, return to the previous stage, or jump to any specific stage.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#017E84; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-hand-pointer-o" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Smart buttons</b><br/><span style="color:#555;">Approve / Reject / Send Back appear only for the approvers of the current stage.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#714B67; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-lock" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Block business actions</b><br/><span style="color:#555;">Methods such as <code>button_confirm</code> are refused until the record is fully approved.</span></div>
+            </div></div>
+            <div class="col-md-6 mb-3"><div style="display:flex; gap:14px; align-items:flex-start;">
+                <span style="flex:0 0 44px; height:44px; border-radius:10px; background:#017E84; color:#fff; display:flex; align-items:center; justify-content:center;"><i class="fa fa-envelope" style="font-size:20px;"></i></span>
+                <div><b style="font-size:16px;">Email notifications</b><br/><span style="color:#555;">A template per stage and per event (new stage, approved, rejected, sent back), plus followers and extra recipients.</span></div>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="oe_container" style="padding: 32px 16px; background:#F7F7F9; border-radius:14px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 26px;"><i class="fa fa-cogs"></i> How it works - 4 steps</h2>
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-3">
+                <div style="width:56px; height:56px; margin:0 auto 10px; border-radius:50%; background:#714B67; color:#fff; font-size:24px; font-weight:700; line-height:56px;">1</div>
+                <b>Create a workflow</b><p style="color:#555; font-size:14px;">Choose the target model and, optionally, trigger criteria.</p>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div style="width:56px; height:56px; margin:0 auto 10px; border-radius:50%; background:#8A5A7E; color:#fff; font-size:24px; font-weight:700; line-height:56px;">2</div>
+                <b>Add stages</b><p style="color:#555; font-size:14px;">Set approvers, approval method, allowed actions and emails.</p>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div style="width:56px; height:56px; margin:0 auto 10px; border-radius:50%; background:#3E6D7A; color:#fff; font-size:24px; font-weight:700; line-height:56px;">3</div>
+                <b>Apply configuration</b><p style="color:#555; font-size:14px;">One click adds the buttons and status bar to the model's form.</p>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div style="width:56px; height:56px; margin:0 auto 10px; border-radius:50%; background:#017E84; color:#fff; font-size:24px; font-weight:700; line-height:56px;">4</div>
+                <b>Approve</b><p style="color:#555; font-size:14px;">Approvers act from the record; everything is logged.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== SCREENSHOTS ===================== -->
+<section class="oe_container" style="padding: 40px 16px 8px;">
+    <div class="oe_row" style="max-width: 1100px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 8px;"><i class="fa fa-desktop"></i> Step-by-step Guide</h2>
+        <p class="text-center" style="color:#555; font-size:16px; margin-bottom: 32px;">Example: a 3-level approval on Purchase Orders (Purchasing Manager &#8594; Finance &#8594; COO).</p>
+
+        <!-- 1 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#714B67; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">1</span>Approval Workflows</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                <i class="fa fa-folder-open-o" style="color:#017E84;"></i> <b>Approvals &#8250; Configuration &#8250; Approval Workflows</b><br/>
+                All your workflows in one list: the target model, the trigger criteria, the number of stages and the status. Drag a line to change the priority.
+            </p>
+            <img src="screenshots/01_workflows_list.png" class="img-fluid" alt="Approval workflows list" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 2 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#714B67; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">2</span>Configure the workflow</h3>
+            <div style="margin-left:42px; color:#555; font-size:15px;">
+                <ul style="line-height:1.8; padding-left:18px;">
+                    <li><b>Target Model</b> - the document to approve (here <i>Purchase Order</i>).</li>
+                    <li><b>State Field</b> - detected automatically (<code>state</code>, or the status bar field of the form); change it if your model uses another field.</li>
+                    <li><b>Methods to Approve</b> - business buttons blocked until approval, e.g. <code>button_confirm</code>.</li>
+                    <li><b>Add Buttons to the Form</b> - injects Approve / Reject / Send Back into the form, no XML needed.</li>
+                    <li><b>Trigger Criteria</b> - a domain editor to limit the workflow to some records.</li>
+                    <li><b>Approval Stages</b> - mix the model's own states with approval stages, in any order.</li>
+                </ul>
+                <div style="padding:10px 14px; background:#EAF6F6; border-left:4px solid #017E84; border-radius:6px; margin-bottom:14px;">
+                    <i class="fa fa-lightbulb-o" style="color:#017E84;"></i> Click <b>Apply Configuration</b> after editing to refresh the buttons and the status bar on the target form.
+                </div>
+            </div>
+            <img src="screenshots/02_workflow_form.png" class="img-fluid" alt="Workflow form" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 3 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#714B67; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">3</span>Define each approval stage</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                Choose <b>who</b> approves (users, employees, job position or manager), <b>how many</b> must approve, which <b>actions</b> are allowed
+                and what happens on <b>rejection</b> or <b>send back</b>. A <b>Stage Condition</b> lets you skip the stage for records that do not need it.
+            </p>
+            <img src="screenshots/03_stage_form.png" class="img-fluid" alt="Approval stage form" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 4 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#714B67; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">4</span>Notifications per stage</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                <i class="fa fa-envelope-o" style="color:#017E84;"></i> Pick an email template for each event - <b>stage reached</b>, <b>approved</b>, <b>rejected</b>, <b>sent back</b> -
+                notify the record's followers and add extra recipients. Without a template, approvers get a chatter notification.
+            </p>
+            <img src="screenshots/04_stage_notifications.png" class="img-fluid" alt="Stage notifications" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 5 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#017E84; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">5</span>Approve from the document</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                The approver sees a button named after the current stage (<b>Purchasing Manager</b>) plus <b>Reject</b> and <b>Send Back</b> (<b>Cancel</b> and <b>Reset to Draft</b> can be enabled per stage).
+                The status bar shows the approval stages next to the native states. Other users do not see the buttons.
+            </p>
+            <img src="screenshots/05_record_pending.png" class="img-fluid" alt="Record waiting for approval" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 6 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#017E84; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">6</span>Reject or send back with a reason</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                <i class="fa fa-comment-o" style="color:#017E84;"></i> Rejecting or sending back opens a short dialog to enter the reason. It is saved in the history and sent in the notification.
+            </p>
+            <img src="screenshots/06_reject_wizard.png" class="img-fluid" alt="Reject dialog" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 7 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#017E84; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">7</span>The record moves stage by stage</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                Once a stage is approved, the record goes to the next one and its approvers are notified. You can give each stage a custom button label (here <b>Approve as COO</b>).
+            </p>
+            <img src="screenshots/07_record_coo_stage.png" class="img-fluid" alt="Record at the last stage" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 8 -->
+        <div style="margin-bottom: 44px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#D48806; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">8</span>"To Approve by Me" dashboard</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                <i class="fa fa-inbox" style="color:#D48806;"></i> <b>Approvals &#8250; Approval Records</b> lists every document waiting for you, across all models, with its current stage and status.
+            </p>
+            <img src="screenshots/08_approval_records.png" class="img-fluid" alt="Approval records" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+
+        <!-- 9 -->
+        <div style="margin-bottom: 20px;">
+            <h3 style="font-weight:700;"><span style="display:inline-block; width:34px; height:34px; border-radius:50%; background:#D48806; color:#fff; text-align:center; line-height:34px; font-size:17px; margin-right:8px;">9</span>Full approval history</h3>
+            <p style="color:#555; font-size:15px; margin-left:42px;">
+                <i class="fa fa-history" style="color:#D48806;"></i> <b>Approvals &#8250; Approval History</b> records every action: date, document, stage, action, user, new status and comment.
+                Ideal for internal audit.
+            </p>
+            <img src="screenshots/09_approval_history.png" class="img-fluid" alt="Approval history" style="width:100%; border:1px solid #ddd; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.08);"/>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== OPTIONS TABLE ===================== -->
+<section class="oe_container" style="padding: 32px 16px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 22px;"><i class="fa fa-table"></i> Configuration Options at a Glance</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered" style="font-size:15px;">
+                <thead style="background:#714B67; color:#fff;">
+                    <tr><th style="width:26%;">Setting</th><th>Available options</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><i class="fa fa-user" style="color:#714B67;"></i> <b>Approver Type</b></td><td>Specific Users &#183; Specific Employees &#183; Job Position &#183; Employee's Manager (level 1 = direct manager, 2 = manager's manager...)</td></tr>
+                    <tr><td><i class="fa fa-check-square-o" style="color:#714B67;"></i> <b>Approval Method</b></td><td>One approver is enough &#183; All approvers are required &#183; Minimum number of approvals</td></tr>
+                    <tr><td><i class="fa fa-toggle-on" style="color:#714B67;"></i> <b>Available Actions</b></td><td>Approve &#183; Reject &#183; Send Back &#183; Cancel &#183; Reset to Draft (each can be turned on/off per stage)</td></tr>
+                    <tr><td><i class="fa fa-arrow-right" style="color:#714B67;"></i> <b>State after Approval</b></td><td>Optional: the state written on the document once the stage is approved (e.g. move a Purchase Order to <i>RFQ Sent</i>). Empty = the document keeps its state.</td></tr>
+                    <tr><td><i class="fa fa-times-circle" style="color:#714B67;"></i> <b>On Rejection</b></td><td>Reject the request &#183; Return to Draft &#183; Return to the previous stage &#183; Return to a specific stage</td></tr>
+                    <tr><td><i class="fa fa-reply" style="color:#714B67;"></i> <b>On Send Back</b></td><td>Return to the previous stage &#183; Return to Draft &#183; Return to a specific stage</td></tr>
+                    <tr><td><i class="fa fa-envelope" style="color:#714B67;"></i> <b>Emails</b></td><td>Stage template &#183; Approval template &#183; Rejection template &#183; Send Back template &#183; Notify followers &#183; Extra recipients</td></tr>
+                    <tr><td><i class="fa fa-shield" style="color:#714B67;"></i> <b>Security groups</b></td><td><b>Approval User</b> - acts on assigned approvals and reads the history &#183; <b>Approval Administrator</b> - configures workflows and stages</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOR DEVELOPERS ===================== -->
+<section class="oe_container" style="padding: 32px 16px; background:#F7F7F9; border-radius:14px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 8px;"><i class="fa fa-code"></i> For Developers (optional)</h2>
+        <p class="text-center" style="color:#555; margin-bottom: 22px;">No code is needed. For deeper integration, inherit the mixin and use the hooks.</p>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <p style="font-weight:700; margin-bottom:6px;">1. Add the approval fields to your model</p>
+<pre style="background:#2B2B3A; color:#E6E6F0; padding:16px; border-radius:8px; font-size:13px; white-space:pre-wrap;">class PurchaseOrder(models.Model):
+    _name = 'purchase.order'
+    _inherit = ['purchase.order', 'approval.mixin']</pre>
+            </div>
+            <div class="col-md-6 mb-3">
+                <p style="font-weight:700; margin-bottom:6px;">2. Run your logic when approved / rejected</p>
+<pre style="background:#2B2B3A; color:#E6E6F0; padding:16px; border-radius:8px; font-size:13px; white-space:pre-wrap;">def _on_approval_done(self):
+    return self.button_confirm()
+
+def _on_approval_rejected(self):
+    return self.button_cancel()</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================== FAQ ========================== -->
+<section class="oe_container" style="padding: 36px 16px 16px;">
+    <div class="oe_row" style="max-width: 1000px; margin: 0 auto;">
+        <h2 class="text-center" style="color:#714B67; font-weight:700; margin-bottom: 22px;"><i class="fa fa-question-circle"></i> Frequently Asked Questions</h2>
+        <div style="border:1px solid #eee; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+            <b><i class="fa fa-angle-right" style="color:#017E84;"></i> Which models can I use?</b>
+            <p style="color:#555; margin:6px 0 0;">Any non-transient model, standard or custom: Purchase Orders, Invoices &amp; Bills, Purchase Requisitions, Employee Requests, Loans, and more.</p>
+        </div>
+        <div style="border:1px solid #eee; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+            <b><i class="fa fa-angle-right" style="color:#017E84;"></i> Can I have several workflows on the same model?</b>
+            <p style="color:#555; margin:6px 0 0;">Yes. Use trigger criteria and sequence: the first active workflow that matches the record is applied (e.g. one for invoices, another for bills).</p>
+        </div>
+        <div style="border:1px solid #eee; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+            <b><i class="fa fa-angle-right" style="color:#017E84;"></i> What happens to records already under approval when I change a workflow?</b>
+            <p style="color:#555; margin:6px 0 0;">They keep their current stage. The new configuration applies to the next steps they go through.</p>
+        </div>
+        <div style="border:1px solid #eee; border-radius:10px; padding:16px 20px; margin-bottom:12px;">
+            <b><i class="fa fa-angle-right" style="color:#017E84;"></i> Does it require Odoo Enterprise?</b>
+            <p style="color:#555; margin:6px 0 0;">No. It only depends on <code>base</code>, <code>mail</code> and <code>hr</code>, so it works on Community and Enterprise.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= DEVELOPER ======================= -->
+<section class="oe_container" style="padding: 32px 16px; margin-top: 16px; background-color: #5E3D57; background-image: linear-gradient(120deg, #5E3D57 0%, #016A6F 100%); border-radius: 14px;">
+    <div class="oe_row text-center">
+        <h2 style="color:#fff; font-weight:700; margin-bottom: 8px;"><i class="fa fa-code"></i> Developed by Deja-Tech</h2>
+        <p style="color:#FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,.35); font-size:17px; margin: 0;">Need help or a customization? Contact us through the Odoo Apps store.</p>
+    </div>
+</section>
