@@ -19,8 +19,10 @@ Define approval workflows that can be applied to any model, without development:
 * Full approval history / audit trail on every record.
     """,
     'category': 'Extra Tools',
-    'license': 'LGPL-3',
-    'author': 'NRDC',
+    'license': 'OPL-1',
+    'author': 'Deja-Tech',
+    'price': 79.0,
+    'currency': 'EUR',
     'depends': ['base', 'mail', 'hr'],
     'data': [
         'security/approval_security.xml',
